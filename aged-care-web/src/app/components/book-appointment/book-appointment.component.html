@@ -1,0 +1,36 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Appointments</h2>
+  <form>
+    <div class="form-group">
+      <label for="apptDate">Appointment Date:</label>
+      <input type="apptDate" [(ngModel)]="booking.apptDate" placeholder="Appointment Date" name="Appointment Date"
+        class="form-control" id="apptDate">
+    </div>
+
+    <div class="form-group">
+      <label for="apptTime">Appointment Time:</label>
+      <input [(ngModel)]="booking.apptTime" placeholder="Appointment Time" name="Appointment Time" class="form-control"
+        id="apptTime">
+    </div>
+
+    <div class="form-group">
+      <label for="clientName">Client Name</label>
+      <input [(ngModel)]="booking.clientName" placeholder="Client Name" name="Client Name" class="form-control"
+        id="clientName">
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input [(ngModel)]="booking.address" placeholder="Address" name="Address" class="form-control" id="address">
+    </div>
+
+    <div class="form-group">
+      <label for="condition">Condition</label>
+      <input [(ngModel)]="booking.condition" placeholder="Condition" name="Condition" class="form-control"
+        id="condition">
+    </div>
+
+
+    <button class="btn btn-success" (click)="createAppointments()">Create</button>
+  </form>
+</div>

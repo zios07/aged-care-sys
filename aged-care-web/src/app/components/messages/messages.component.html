@@ -1,0 +1,40 @@
+<div class="row messages-container">
+
+  <table class="table table-striped">
+    <tr>
+      <th>Sender Email</th>
+      <th>Date</th>
+      <th>Message</th>
+      <th>Status</th>
+    </tr>
+
+    <tr *ngFor="let msg of messages">
+      <td>{{msg.sender.email}}</td>
+      <td>{{msg.sendDate}}</td>
+      <td>{{msg.body}}</td>
+      <td>
+
+        <button *ngIf="!msg.responded" mat-raised-button color="primary" (click)="respond(msg)">Respond</button>
+        <div *ngIf="msg.responded">Already responded</div>
+      </td>
+    </tr>
+    <tr *ngIf="responding">
+      <td colspan="5">
+        <fieldset class="search-fs">
+          <legend class="search-fs-legend">Response: </legend>
+          <label for="message">Re: </label>
+          <input type="text" class="form-control" disabled [(ngModel)]="selectedMessage.sender.email">
+          <label for="message">Response body: </label>
+          <textarea class="form-control" name="message" id="message" cols="30" rows="2"
+            [(ngModel)]="response.body"></textarea>
+            <br>
+          <button mat-raised-button color="primary" (click)="send()">Send</button>
+        </fieldset>
+      </td>
+    </tr>
+    <tr *ngIf="messages.length == 0">
+      <td>No message available</td>
+    </tr>
+  </table>
+
+</div>

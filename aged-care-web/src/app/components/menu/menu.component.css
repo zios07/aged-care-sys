@@ -1,0 +1,27 @@
+.mat-button {
+    color: white
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.menu-icon:hover {
+    cursor: pointer;
+}
+
+.welcome-span {
+    font-size: 0.7em;
+}
+
+.nav-item {
+    margin-right: 100px;
+}
+
+.nav-reports {
+    margin-left: 50px;
+}
+
+button {
+    font-size: small
+}

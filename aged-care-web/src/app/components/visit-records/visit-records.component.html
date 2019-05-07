@@ -1,0 +1,23 @@
+<table border="2">
+  <thead></thead>
+  <tr>
+    <th>Appointment Date</th>
+    <th>Appointment Time</th>
+    <th>Client's Name</th>
+    <th>Address</th>
+    <th>Condition</th>
+    <th>Recommendation</th>
+  </tr>
+
+  <tbody>
+    <tr *ngFor="let record of records">
+      <td>{{record.apptDate}}</td>
+      <td>{{record.apptTime}}</td>
+      <td>{{record.clientName}}</td>
+      <td>{{record.address}}</td>
+      <td>{{record.condition}}</td>
+      <td>{{record.recommendation}}</td>
+
+    </tr>
+  </tbody>
+</table>

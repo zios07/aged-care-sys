@@ -1,0 +1,51 @@
+<mat-toolbar color="primary" *ngIf="isAuthenticated()">
+  <a mat-button color="secondary" routerLink="home">
+    <mat-icon>home</mat-icon>&nbsp;
+    <span>HOME</span>
+  </a>
+
+  <mat-menu #list="matMenu">
+    <a mat-menu-item routerLink="appointments">
+      <span>View Appointments</span>
+    </a>
+    <a mat-menu-item routerLink="bookappointment">
+      <span>Book Appointments</span>
+    </a>
+    <a mat-menu-item routerLink="records">
+      <span>Visit Records</span>
+    </a>
+  </mat-menu>
+
+  <button mat-icon-button class="nav-item" [matMenuTriggerFor]="list">
+    <mat-icon>event</mat-icon>&nbsp;
+    <span>Nurse Visiting</span>
+  </button>
+
+  <button mat-icon-button class="nav-item" routerLink="contact-admin">
+    <mat-icon>message</mat-icon>&nbsp;
+    <span>Contact ADMIN</span>
+  </button>
+
+  <button mat-icon-button class="nav-item" routerLink="contact-doctor">
+    <mat-icon>list</mat-icon>&nbsp;
+    <span>Get Information From Doctor</span>
+  </button>
+
+  <span class="fill-remaining-space"></span>
+  <!-- <span class="welcome-span">Signed in as <b>{{username}}</b></span> -->
+  <button class="mat-button-menu" mat-button [matMenuTriggerFor]="menuList">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menuList="matMenu">
+    <a mat-menu-item routerLink="messages">
+      <mat-icon>message</mat-icon>
+      <span>Messages</span>
+    </a>
+    <a mat-menu-item (click)="logout()">
+      <mat-icon>clear</mat-icon>
+      <span>Logout</span>
+    </a>
+  </mat-menu>
+
+</mat-toolbar>
