@@ -35,10 +35,10 @@ public class UserService implements IUserService {
             }
         }
 
-        if (isAdmin) {
-            user.setRole(roleService.getRoleAdmin());
-        } else {
-            user.setRole(roleService.getRoleUser());
+        if (user.getRole() == null) {
+            if (isAdmin) {
+                user.setRole(roleService.getRoleAdmin());
+            }
         }
 
         if (user.getAccount() != null) {

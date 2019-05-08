@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.care.aged.AgedCareArt.util.UtilContants.ROLE_CODE_ADMIN;
 import static com.care.aged.AgedCareArt.util.UtilContants.ROLE_CODE_USER;
@@ -38,7 +39,7 @@ public class RoleService implements IRoleService {
 
 	@Override
 	public List<Role> findAll() {
-		return repo.findAll();
+		return repo.findAll().stream().filter(role -> !role.getRoleCode().equals(ROLE_CODE_ADMIN)).collect(Collectors.toList());
 	}
 
 	@Override

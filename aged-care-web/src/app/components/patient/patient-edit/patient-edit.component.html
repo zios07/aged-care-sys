@@ -1,0 +1,115 @@
+<mat-card>
+  <form #patientForm="ngForm" (ngSubmit)="save(patientForm.value)">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{patient.surname?'Edit ':'Add '}} Patient</h2>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <input type="hidden" name="href" [(ngModel)]="patient.href">
+      <mat-form-field>
+        <input matInput placeholder="Patient Sname" [(ngModel)]="patient.surname" required name="surname"
+          value="A patient" #surname>
+
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient Firstname" [(ngModel)]="patient.firstname" required name="firstname"
+          value="A patient" #firstname>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient lastname" [(ngModel)]="patient.lastname" required name="lastname"
+          value="A patient" #lastname>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient disease" [(ngModel)]="patient.disease" required name="disease"
+          value="A patient" #disease>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient drugs" [(ngModel)]="patient.drugs" required name="drugs" value="A patient"
+          #drugs>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient phone" [(ngModel)]="patient.phone" required name="phone" value="A patient"
+          #phone>
+
+      </mat-form-field>
+
+
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient dateofbirth" [(ngModel)]="patient.dateofbirth" required name="dateofbirth"
+          value="A patient" #dateofbirth>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient address" [(ngModel)]="patient.address" required name="address"
+          value="A patient" #address>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient nationality" [(ngModel)]="patient.nationality" required name="nationality"
+          value="A patient" #nationality>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient diagnosisdate" [(ngModel)]="patient.diagnosisdate" required
+          name="diagnosisdate" value="A patient" #diagnosisdate>
+
+      </mat-form-field>
+
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient lastnursevisitdate" [(ngModel)]="patient.lastnursevisitdate" required
+          name="lastnursevisitdate" value="A patient" #lastnursevisitdate>
+
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <input matInput placeholder="Patient gender" [(ngModel)]="patient.gender" required name="gender"
+          value="A patient" #gender>
+
+      </mat-form-field>
+
+
+
+
+    </mat-card-content>
+
+    <!-- //NEW FIELDS TO UPDATE IN ANGULAR UI : phone, patientid, patientid, dateofbirth, address, nationality, diagnosisdate, lastnursevisitdate -->
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!patientForm.form.valid">Save</button>
+      <button mat-raised-button color="secondary" type="button" [disabled]="!patientForm.form.valid"
+        (click)="remove(patient.href)" *ngIf="patient.href">Delete</button>
+      <a mat-button routerLink="/patient-list">Cancel</a>
+    </mat-card-actions>
+    <mat-card-footer>
+      <div class="giphy">
+        <!--<img src="{{patient.giphyUrl}}" alt="{{patient.surname}}">-->
+      </div>
+    </mat-card-footer>
+
+  </form>
+</mat-card>

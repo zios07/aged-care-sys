@@ -13,7 +13,7 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
+    @Column
     private String email;
 
     private String firstName;

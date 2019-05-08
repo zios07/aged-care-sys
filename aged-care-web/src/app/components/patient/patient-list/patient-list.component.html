@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-title>Search Records</mat-card-title>
+  <mat-card-content>
+      <form #searchForm="ngForm" (ngSubmit)="searchRecord(searchForm.value)">
+<input type="hidden" name="todo" [(ngModel)]="search-now">
+  <mat-form-field>
+                      <input matInput placeholder="Patient ID" [(ngModel)]="searchid" required name="searchid" #search>
+              </mat-form-field>
+              <mat-card-actions >
+                <button mat-raised-button color="primary" type="submit" [disabled]="!searchForm.form.valid" >Search &raquo;</button>
+              </mat-card-actions>
+              <!--END SEARCH FIELD-->
+              </form>
+      <mat-card-title>Patient List</mat-card-title>
+      <table style="padding:10px;" class="mat-elevation-z8">
+        <tr style="background-color:rgba(102,102,153,.5)">
+            <th>Surname</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Disease</th>
+              <th>Drugs</th>
+              <th>Phone</th>
+              
+              <th>dateofbirth</th>
+              <th>address</th>
+              <th>nationality</th>
+              <th>diagnosisdate</th>
+              <th>lastnursevisitdate</th>
+              <th>gender</th>
+              <th>ID</th>
+              <th>Action</th>
+              <!-- //NEW FIELDS TO UPDATE IN ANGULAR UI : phone, patientid, patientid, dateofbirth, address, nationality, diagnosisdate, lastnursevisitdate-->
+          </tr>
+          <tr *ngFor="let patient of fewpatients" style="padding:10px;">
+            <td>{{patient.surname}}</td>
+              <td>{{patient.firstname}}</td>
+              <td>{{patient.lastname}}</td>
+              <td>{{patient.disease}}</td>
+              <td>{{patient.drugs}}</td>
+              <td>{{patient.phone}}</td>
+              
+              <td>{{patient.dateofbirth}}</td>
+              <td>{{patient.address}}</td>
+              <td>{{patient.nationality}}</td>
+              <td>{{patient.diagnosisdate}}</td>
+              <td>{{patient.lastnursevisitdate}}</td>
+              <td>{{patient.gender}}</td>
+              <td>{{patient.id}}</td>
+              <td><a mat-button [routerLink]="['/patient-edit', patient.id]" style="background-color:rgba(153,51,0,.4)">Edit/Delete &nbsp;</a></td>
+          </tr>
+          
+      </table>
+  </mat-card-content>
+  <button mat-fab color="primary" [routerLink]="['/patient-add']" class="mat-elevation-z8">Add</button>
+</mat-card>

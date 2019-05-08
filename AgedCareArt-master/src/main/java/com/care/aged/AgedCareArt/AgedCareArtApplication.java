@@ -1,7 +1,9 @@
 package com.care.aged.AgedCareArt;
 
 import com.care.aged.AgedCareArt.entity.Doctor;
+import com.care.aged.AgedCareArt.entity.HealthRecord;
 import com.care.aged.AgedCareArt.entity.Role;
+import com.care.aged.AgedCareArt.jpa.HealthRecordRepository;
 import com.care.aged.AgedCareArt.patient.Patient;
 import com.care.aged.AgedCareArt.patient.PatientRepository;
 import com.care.aged.AgedCareArt.service.DoctorService;
@@ -27,6 +29,9 @@ public class AgedCareArtApplication implements CommandLineRunner {
     @Autowired
     private PatientRepository patientRepository;
 
+    @Autowired
+    private HealthRecordRepository healthRecordRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(AgedCareArtApplication.class, args);
     }
@@ -44,6 +49,9 @@ public class AgedCareArtApplication implements CommandLineRunner {
             Patient patient2 = new Patient("JOHN", "JAMES", "BRIGHT", "Male", "Headache", "Panadol", "+233456677777", "19/04/2019", "12 melbourne", "Nigeria", "19/04/2019", "19/04/2019");
             Patient patient4 = new Patient("WENDEL", "MENDEL", "FRANCIS", "Female", "Emotional Trauma", "girlnadol", "+233456677777", "19/04/2019", "12 melbourne", "Nigeria", "19/04/2019", "19/04/2019");
             patientRepository.saveAll(Arrays.asList(patient1, patient2, patient3, patient4));
+
+            healthRecordRepository.save(new HealthRecord("Health Info 1", "Health summary 1", "Claims 1", "Medicare 1", 19, 90923, patientRepository.findByFirstname(patient1.getFirstname())));
+            healthRecordRepository.save(new HealthRecord("Health Info 2", "Health summary 2", "Claims 2", "Medicare 2", 19, 90923, patientRepository.findByFirstname(patient1.getFirstname())));
         }
 
         if (doctorService.findAll().isEmpty()) {

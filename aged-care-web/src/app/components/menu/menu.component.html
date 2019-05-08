@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" *ngIf="isAuthenticated()">
-  <a mat-button color="secondary" routerLink="home">
+  <a mat-button color="secondary" routerLink="/">
     <mat-icon>home</mat-icon>&nbsp;
     <span>HOME</span>
   </a>
@@ -32,7 +32,6 @@
   </button>
 
   <span class="fill-remaining-space"></span>
-  <!-- <span class="welcome-span">Signed in as <b>{{username}}</b></span> -->
   <button class="mat-button-menu" mat-button [matMenuTriggerFor]="menuList">
     <mat-icon>menu</mat-icon>
   </button>

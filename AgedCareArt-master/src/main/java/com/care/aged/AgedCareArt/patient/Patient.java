@@ -50,6 +50,11 @@ public class Patient {
 
 //    }
 
+
+    public Patient(Account account) {
+        this.account = account;
+    }
+
     public Patient(@NonNull String surname, @NonNull String firstname, @NonNull String lastname, @NonNull String gender, @NonNull String disease, @NonNull String drugs, @NonNull String phone, @NonNull String dateofbirth, @NonNull String address, @NonNull String nationality, @NonNull String diagnosisdate, @NonNull String lastnursevisitdate) {
         this.surname = surname;
         this.firstname = firstname;

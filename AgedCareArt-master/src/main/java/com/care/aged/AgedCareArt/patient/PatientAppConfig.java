@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.care.aged.AgedCareArt.patient;
 
 import com.care.aged.AgedCareArt.patient.Patient;
 import org.springframework.beans.factory.ObjectFactory;
