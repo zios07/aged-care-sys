@@ -52,6 +52,10 @@ export class NurseService {
     return this.httpClient.get<Appointments[]>(this.url + '/appointments');
   }
 
+  getNurses() {
+    return this.httpClient.get(this.url + '/v1/nurses')
+  }
+
   public createAppointments(appointments) {
     return this.httpClient.post<Appointments>(this.url + '/appointments', appointments);
   }

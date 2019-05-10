@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NurseService, Appointments } from 'src/app/services/nurse.service';
 import { ToastrService } from 'ngx-toastr';
+import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
   selector: 'app-book-appointment',
@@ -10,13 +11,18 @@ import { ToastrService } from 'ngx-toastr';
 export class BookAppointmentComponent implements OnInit {
 
   booking: Appointments = new Appointments("", "", "", "", "", "");
+  nurses = [];
+  doctors = [];
 
   constructor(
     private nurseService: NurseService,
+    private doctorService: DoctorService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit() {
+    this.loadNurses();
+    this.loadDoctors();
   }
 
   createAppointments(): void {
@@ -26,5 +32,21 @@ export class BookAppointmentComponent implements OnInit {
       });
 
   };
+
+  loadNurses() {
+    this.nurseService.getNurses().subscribe((resp: any) => {
+      this.nurses = resp;
+    }, error => {
+
+    })
+  }
+
+  loadDoctors() {
+    this.doctorService.getDoctors().subscribe((resp: any) => {
+      this.doctors = resp;
+    }, error => {
+
+    })
+  }
 
 }

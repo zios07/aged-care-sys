@@ -25,17 +25,17 @@
 
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="emergencyContact()">
-        <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-list cols="1" rowHeight="60px">
 
           <mat-grid-tile>
             <mat-form-field>
-              <input matInput formControlName="healthID" required placeholder="Health ID">
+              <input matInput formControlName="healthID" placeholder="Health ID">
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile>
             <mat-form-field>
-              <input matInput formControlName="healthInfo" required placeholder="Health Info">
+              <input matInput formControlName="healthInfo" placeholder="Health Info">
             </mat-form-field>
           </mat-grid-tile>
 
@@ -66,7 +66,7 @@
           </mat-grid-tile>
 
         </mat-grid-list>
-        <button type="submit" [disabled]="!form.valid" mat-raised-button color="primary">Emergency Contact</button>
+        <button type="submit" mat-raised-button color="primary">Emergency Contact</button>
       </form>
       <br>
 
@@ -74,4 +74,37 @@
       <br>
     </mat-card-content>
   </mat-card>
+
+  <div class="content" fxLayout="row" fxLayoutAlign="center" *ngIf="showContactForm">
+
+      <mat-card elevation="5" fxFlex>
+
+
+          <mat-card-title>
+            <h2>{{ messageFormTitle }}</h2>
+          </mat-card-title>
+      
+          <mat-card-content>
+            <form [formGroup]="contactForm" (ngSubmit)="sendMessage()">
+              <mat-grid-list cols="1" rowHeight="100px">
+    
+                <mat-grid-tile>
+                  <mat-form-field>
+                    <textarea matInput formControlName="message" placeholder="Message"></textarea>
+                  </mat-form-field>
+                </mat-grid-tile>
+      
+              </mat-grid-list>
+              <button type="submit" [disabled]="!contactForm.valid" mat-raised-button color="primary">Send
+                Message</button>
+            </form>
+            <br>
+      
+            <mat-spinner *ngIf="loading" mode="indeterminate"></mat-spinner>
+            <br>
+          </mat-card-content>
+        </mat-card>
+
+  </div>
+
 </div>

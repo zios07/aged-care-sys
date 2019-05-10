@@ -9,247 +9,242 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Patient {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private @NonNull String surname;
-    private @NonNull String firstname;
-    private @NonNull String lastname;
-    private @NonNull String gender;
-    private @NonNull String disease;
-    private @NonNull String drugs;
+	@Id
+	@GeneratedValue
+	private Long id;
+	private @NonNull String surname;
+	private @NonNull String firstname;
+	private @NonNull String lastname;
+	private @NonNull String gender;
+	private @NonNull String disease;
+	private @NonNull String drugs;
 
-    //FIELDS ADDED ON 16/04/2019
-    private @NonNull String phone;
+	// FIELDS ADDED ON 16/04/2019
+	private @NonNull String phone;
 
-    private @NonNull String dateofbirth;
-    private @NonNull String address;
+	private @NonNull String dateofbirth;
+	private @NonNull String address;
 
-    private @NonNull String nationality;
-    private @NonNull String diagnosisdate;
-    private @NonNull String lastnursevisitdate;
+	private @NonNull String nationality;
+	private @NonNull String diagnosisdate;
+	private @NonNull String lastnursevisitdate;
 
-    private String email;
-    private String age;
-    @ManyToOne
-    private Doctor doctor;
-    @ManyToOne
-    private Nurse nurse;
-    @OneToOne
-    private HealthRecord healthRecord;
+	private String email;
+	private String age;
+	@ManyToOne
+	private Doctor doctor;
+	@ManyToOne
+	private Nurse nurse;
+	@OneToOne(cascade = CascadeType.ALL)
+	private HealthRecord healthRecord;
+	private String username;
+	private Long userID;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Account account;
+	public Patient() {
 
-    @ManyToOne
-    private Role role;
+	}
 
-//    public Patient() {
+	public Patient(@NonNull String surname, @NonNull String firstname, @NonNull String lastname, @NonNull String gender,
+			@NonNull String disease, @NonNull String drugs, @NonNull String phone, @NonNull String dateofbirth,
+			@NonNull String address, @NonNull String nationality, @NonNull String diagnosisdate,
+			@NonNull String lastnursevisitdate) {
+		this.surname = surname;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.disease = disease;
+		this.drugs = drugs;
+		this.phone = phone;
+		this.dateofbirth = dateofbirth;
+		this.address = address;
+		this.nationality = nationality;
+		this.diagnosisdate = diagnosisdate;
+		this.lastnursevisitdate = lastnursevisitdate;
+	}
 
-//    }
+	public Patient(@NonNull String surname, @NonNull String firstname, @NonNull String lastname, @NonNull String gender,
+			@NonNull String disease, @NonNull String drugs, @NonNull String phone, @NonNull String dateofbirth,
+			@NonNull String address, @NonNull String nationality, @NonNull String diagnosisdate,
+			@NonNull String lastnursevisitdate, String email, String age, Doctor doctor, Nurse nurse,
+			HealthRecord healthRecord) {
+		this.surname = surname;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.disease = disease;
+		this.drugs = drugs;
+		this.phone = phone;
+		this.dateofbirth = dateofbirth;
+		this.address = address;
+		this.nationality = nationality;
+		this.diagnosisdate = diagnosisdate;
+		this.lastnursevisitdate = lastnursevisitdate;
+		this.email = email;
+		this.age = age;
+		this.doctor = doctor;
+		this.nurse = nurse;
+		this.healthRecord = healthRecord;
+	}
 
+	public Long getId() {
+		return id;
+	}
 
-    public Patient(Account account) {
-        this.account = account;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Patient(@NonNull String surname, @NonNull String firstname, @NonNull String lastname, @NonNull String gender, @NonNull String disease, @NonNull String drugs, @NonNull String phone, @NonNull String dateofbirth, @NonNull String address, @NonNull String nationality, @NonNull String diagnosisdate, @NonNull String lastnursevisitdate) {
-        this.surname = surname;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.gender = gender;
-        this.disease = disease;
-        this.drugs = drugs;
-        this.phone = phone;
-        this.dateofbirth = dateofbirth;
-        this.address = address;
-        this.nationality = nationality;
-        this.diagnosisdate = diagnosisdate;
-        this.lastnursevisitdate = lastnursevisitdate;
-    }
+	public String getSurname() {
+		return surname;
+	}
 
-    public Patient(@NonNull String surname, @NonNull String firstname, @NonNull String lastname, @NonNull String gender, @NonNull String disease, @NonNull String drugs, @NonNull String phone, @NonNull String dateofbirth, @NonNull String address, @NonNull String nationality, @NonNull String diagnosisdate, @NonNull String lastnursevisitdate, String email, String age, Doctor doctor, Nurse nurse, HealthRecord healthRecord, Account account, Role role) {
-        this.surname = surname;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.gender = gender;
-        this.disease = disease;
-        this.drugs = drugs;
-        this.phone = phone;
-        this.dateofbirth = dateofbirth;
-        this.address = address;
-        this.nationality = nationality;
-        this.diagnosisdate = diagnosisdate;
-        this.lastnursevisitdate = lastnursevisitdate;
-        this.email = email;
-        this.age = age;
-        this.doctor = doctor;
-        this.nurse = nurse;
-        this.healthRecord = healthRecord;
-        this.account = account;
-        this.role = role;
-    }
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
+	public String getFirstname() {
+		return firstname;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getLastname() {
+		return lastname;
+	}
 
-    public String getSurname() {
-        return surname;
-    }
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+	public String getGender() {
+		return gender;
+	}
 
-    public String getFirstname() {
-        return firstname;
-    }
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+	public String getDisease() {
+		return disease;
+	}
 
-    public String getLastname() {
-        return lastname;
-    }
+	public void setDisease(String disease) {
+		this.disease = disease;
+	}
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+	public String getDrugs() {
+		return drugs;
+	}
 
-    public String getGender() {
-        return gender;
-    }
+	public void setDrugs(String drugs) {
+		this.drugs = drugs;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public String getDisease() {
-        return disease;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public void setDisease(String disease) {
-        this.disease = disease;
-    }
+	public String getDateofbirth() {
+		return dateofbirth;
+	}
 
-    public String getDrugs() {
-        return drugs;
-    }
+	public void setDateofbirth(String dateofbirth) {
+		this.dateofbirth = dateofbirth;
+	}
 
-    public void setDrugs(String drugs) {
-        this.drugs = drugs;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public String getNationality() {
+		return nationality;
+	}
 
-    public String getDateofbirth() {
-        return dateofbirth;
-    }
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
 
-    public void setDateofbirth(String dateofbirth) {
-        this.dateofbirth = dateofbirth;
-    }
+	public String getDiagnosisdate() {
+		return diagnosisdate;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public void setDiagnosisdate(String diagnosisdate) {
+		this.diagnosisdate = diagnosisdate;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public String getLastnursevisitdate() {
+		return lastnursevisitdate;
+	}
 
-    public String getNationality() {
-        return nationality;
-    }
+	public void setLastnursevisitdate(String lastnursevisitdate) {
+		this.lastnursevisitdate = lastnursevisitdate;
+	}
 
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getDiagnosisdate() {
-        return diagnosisdate;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setDiagnosisdate(String diagnosisdate) {
-        this.diagnosisdate = diagnosisdate;
-    }
+	public String getAge() {
+		return age;
+	}
 
-    public String getLastnursevisitdate() {
-        return lastnursevisitdate;
-    }
+	public void setAge(String age) {
+		this.age = age;
+	}
 
-    public void setLastnursevisitdate(String lastnursevisitdate) {
-        this.lastnursevisitdate = lastnursevisitdate;
-    }
+	public Doctor getDoctor() {
+		return doctor;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public Nurse getNurse() {
+		return nurse;
+	}
 
-    public String getAge() {
-        return age;
-    }
+	public void setNurse(Nurse nurse) {
+		this.nurse = nurse;
+	}
 
-    public void setAge(String age) {
-        this.age = age;
-    }
+	public HealthRecord getHealthRecord() {
+		return healthRecord;
+	}
 
-    public Doctor getDoctor() {
-        return doctor;
-    }
+	public void setHealthRecord(HealthRecord healthRecord) {
+		this.healthRecord = healthRecord;
+	}
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
+	public Long getUserID() {
+		return userID;
+	}
 
-    public Nurse getNurse() {
-        return nurse;
-    }
+	public void setUserID(Long userID) {
+		this.userID = userID;
+	}
 
-    public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public HealthRecord getHealthRecord() {
-        return healthRecord;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setHealthRecord(HealthRecord healthRecord) {
-        this.healthRecord = healthRecord;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 }

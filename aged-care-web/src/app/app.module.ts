@@ -23,6 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { VisitRecordsComponent } from './components/visit-records/visit-records.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { CdkColumnDef } from '@angular/cdk/table';
+import { HealtRecordsComponent } from './components/healt-records/healt-records.component';
+import { DoctorInboxComponent } from './components/doctor-inbox/doctor-inbox.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CdkColumnDef } from '@angular/cdk/table';
     BookAppointmentComponent,
     VisitRecordsComponent,
     PatientListComponent,
-    PatientEditComponent
+    PatientEditComponent,
+    HealtRecordsComponent,
+    DoctorInboxComponent
   ],
   imports: [
     BrowserModule,

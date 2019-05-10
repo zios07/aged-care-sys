@@ -1,0 +1,68 @@
+<mat-card elevation="5" fxFlex>
+
+  <mat-card-title>
+    <h2>{{ title }}</h2>
+  </mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="emergencyContact()">
+      <mat-grid-list cols="1" rowHeight="100px">
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="healthID" required placeholder="Health ID">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="healthInfo" required placeholder="Health Info">
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="healthSummary" placeholder="Health Summary">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="claims" placeholder="Claims">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="medicare" placeholder="Medicare">
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput type="number" formControlName="age" placeholder="Age">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="doctor" placeholder="Doctor Name">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <input matInput formControlName="nurse" placeholder="Nurse Name">
+          </mat-form-field>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+    <br>
+
+    <mat-spinner *ngIf="submitted" mode="indeterminate"></mat-spinner>
+    <br>
+  </mat-card-content>
+</mat-card>
