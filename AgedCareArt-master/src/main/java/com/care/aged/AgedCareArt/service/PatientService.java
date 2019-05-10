@@ -36,6 +36,6 @@ public class PatientService implements GenericService<Patient, Long> {
     }
 
     public Patient search(String name) {
-        return patientRepository.findByFirstname(name);
+        return patientRepository.findByUsername(name);
     }
 }

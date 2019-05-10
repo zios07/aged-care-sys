@@ -30,6 +30,32 @@
         id="condition">
     </div>
 
+    <div class="form-group">
+      <label>Nurse</label>
+      <select [(ngModel)]="booking.nurse" class="form-control" id="nurseSelect" name="nurseSelect"
+        [ngClass]="{ 'is-invalid': submitted && f.nurse.errors }">
+        <option [ngValue]="nurse" *ngFor="let nurse of nurses">
+          {{nurse.nurseId}} - {{nurse.name}}
+        </option>
+      </select>
+      <div *ngIf="submitted && f.nurse.errors" class="invalid-feedback">
+        <div *ngIf="f.nurse.errors.required">Nurse is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Doctor</label>
+      <select [(ngModel)]="booking.doctor" class="form-control" id="doctorSelect" name="doctorSelect"
+        [ngClass]="{ 'is-invalid': submitted && f.doctor.errors }">
+        <option [ngValue]="doctor" *ngFor="let doctor of doctors">
+          {{doctor.doctorId}} - {{doctor.doctorName}}
+        </option>
+      </select>
+      <div *ngIf="submitted && f.doctor.errors" class="invalid-feedback">
+        <div *ngIf="f.doctor.errors.required">Doctor is required</div>
+      </div>
+    </div>
+
 
     <button class="btn btn-success" (click)="createAppointments()">Create</button>
   </form>

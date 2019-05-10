@@ -24,10 +24,12 @@ public class PatientController {
 
     @GetMapping("prestigious")
     public Collection<Patient> prestigiousPatients() {
-        return patientRepository.findAll().stream().filter(this::isPrestigious).collect(Collectors.toList());
+    	return patientRepository.findAll().stream().filter(this::isPrestigious).collect(Collectors.toList());
     }
 
     public boolean isPrestigious(Patient patient) {
+    	if(patient.getSurname() == null)
+    		return false;
         return !patient.getSurname().equalsIgnoreCase("Brrack Obama") && !
                 patient.getSurname().equalsIgnoreCase("Donald Trump");
     }

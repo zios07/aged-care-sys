@@ -20,6 +20,10 @@ public class Doctor {
     @Column(name = "PATIENTS")
     private List<Patient> patients;
 
+    private Long userID;
+
+	private String username;
+    
     public Long getDoctorId() {
         return doctorId;
     }
@@ -51,4 +55,21 @@ public class Doctor {
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
     }
+
+	public Long getUserID() {
+		return userID;
+	}
+
+	public void setUserID(Long userID) {
+		this.userID = userID;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+    
 }

@@ -24,14 +24,13 @@ public class HealthRecord {
     public HealthRecord() {
     }
 
-    public HealthRecord(String healthInfo, String healthSummary, String claims, String medicare, Integer age, Integer emergencyContact, Patient patient) {
+    public HealthRecord(String healthInfo, String healthSummary, String claims, String medicare, Integer age, Integer emergencyContact) {
         this.healthInfo = healthInfo;
         this.healthSummary = healthSummary;
         this.claims = claims;
         this.medicare = medicare;
         this.age = age;
         this.emergencyContact = emergencyContact;
-        this.patient = patient;
     }
 
     public Long getHealthId() {
