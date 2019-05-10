@@ -12,6 +12,8 @@ import { BookAppointmentComponent } from './components/book-appointment/book-app
 import { VisitRecordsComponent } from './components/visit-records/visit-records.component';
 import { PatientListComponent } from './components/patient/patient-list/patient-list.component';
 import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
+import { HealtRecordsComponent } from './components/healt-records/healt-records.component';
+import { DoctorInboxComponent } from './components/doctor-inbox/doctor-inbox.component';
 
 export const appRoutes: Routes = [
 	{ path: 'login', component: LoginComponent },
@@ -24,6 +26,8 @@ export const appRoutes: Routes = [
 	{ path: 'contact-doctor', component: ContactDoctorComponent, canActivate: [AuthGuard] },
 	{ path: 'nurse-visiting', component: NurseVisitingComponent, canActivate: [AuthGuard] },
 	{ path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
+	{ path: 'health-records', component: HealtRecordsComponent, canActivate: [AuthGuard] },
+	{ path: 'doctor-inbox', component: DoctorInboxComponent, canActivate: [AuthGuard] },
 
 	{ path: '', redirectTo: '/patient-list', pathMatch: 'full', canActivate: [AuthGuard] },
 	{

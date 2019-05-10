@@ -26,7 +26,15 @@ export class LoginComponent {
         localStorage.setItem('token', token);
         localStorage.setItem('username', credentials.username);
         let srcUrl = this.route.snapshot.queryParamMap.get("src");
-        this.router.navigate([srcUrl || '/']);
+        let url = '/';
+        let role = this.jwtHelper.decodeToken(token).role;
+        switch (role) {
+          case 'PATIENT' : url = '/health-records'; break;
+          case 'NURSE' : url = '/appointments'; break;
+          case 'DOCTOR' : url = '/doctor-inbox'; break;
+        }
+        
+        this.router.navigate([srcUrl || url]);
       }
 
     }, error => {
