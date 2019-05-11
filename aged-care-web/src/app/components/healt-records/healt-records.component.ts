@@ -44,16 +44,23 @@ export class HealtRecordsComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.patientId = params['patientID'];
+      const helper = new JwtHelperService();
+      const token = helper.decodeToken(localStorage.getItem('token'));
       if (this.patientId) {
-        let helper = new JwtHelperService();
-        let token = helper.decodeToken(localStorage.getItem('token'));
-        if (token.role === 'ADMINISTRATOR') {
+        if (token.role === 'ADMINISTRATOR' || token.role === 'PATIENT') {
           this.form.enable();
           this.form.controls['healthID'].disable();
           this.editing = true;
         }
       } else {
-        this.editing = false;
+        if (token.role === 'PATIENT') {
+          this.form.enable();
+          this.form.controls['healthID'].disable();
+          this.editing = true;
+          this.patientId = token.userId;
+        } else {
+          this.editing = false;
+        }
       }
       this.getInfos();
     });
