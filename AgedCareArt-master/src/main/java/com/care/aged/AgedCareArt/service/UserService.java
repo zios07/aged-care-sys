@@ -65,17 +65,21 @@ public class UserService implements IUserService {
 
 		if (user.getRole().getRoleCode().equals("PATIENT")) {
 			Patient p = new Patient();
+			p.setFirstname(savedUser.getFirstName());
 			p.setUserID(savedUser.getId());
 			p.setUsername(savedUser.getAccount().getUsername());
 			patientRepo.save(p);
 		} else if (user.getRole().getRoleCode().equals("DOCTOR")) {
 			Doctor d = new Doctor();
+			d.setDoctorName(savedUser.getFirstName());
+			d.setInfo("This is random doctor info");
 			d.setUserID(savedUser.getId());
 			d.setUsername(savedUser.getAccount().getUsername());
 			doctorRepo.save(d);
 		} else if (user.getRole().getRoleCode().equals("NURSE")) {
 			Nurse n = new Nurse();
 			n.setUserID(savedUser.getId());
+			n.setName(savedUser.getFirstName());
 			n.setUsername(savedUser.getAccount().getUsername());
 			nurseRepo.save(n);
 		}

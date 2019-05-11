@@ -76,10 +76,12 @@ public class AgedCareArtApplication implements CommandLineRunner {
 		if (userRepository.findAll().isEmpty()) {
 			User doc = new User();
 			doc.setAccount(new Account("doctor", "kaoukabi"));
+			doc.setFirstName("Dr. Chakkib Bennani");
 			doc.setRole(doctorRole);
 
 			User nurse = new User();
 			nurse.setAccount(new Account("nurse", "kaoukabi"));
+			nurse.setFirstName("Rajae Chraibi");
 			nurse.setRole(nurseRole);
 
 			User patient = new User();
