@@ -3,10 +3,7 @@ package com.care.aged.AgedCareArt.controller.v1;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.care.aged.AgedCareArt.entity.HealthRecord;
 import com.care.aged.AgedCareArt.service.HealthRecordService;
@@ -21,6 +18,11 @@ public class HealthRecordController {
 	@GetMapping("{patientID}")
 	public List<HealthRecord> getHealthRecordForPatient(@PathVariable Long patientID) {
 		return service.getByPatientId(patientID);
+	}
+
+	@PostMapping("{patientId}")
+	public HealthRecord createHealthRecord(@PathVariable Long patientId, @RequestBody HealthRecord healthRecord) {
+		return service.save(healthRecord, patientId);
 	}
 
 }

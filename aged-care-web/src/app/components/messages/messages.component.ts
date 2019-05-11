@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Message } from 'src/app/domain/message';
 import { MessagingService } from 'src/app/services/messaging.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-messages',
@@ -11,7 +10,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MessagesComponent implements OnInit {
 
-
   response: Message = new Message();
   messages: Message[] = [];
   responding: boolean = false;
@@ -19,7 +17,6 @@ export class MessagesComponent implements OnInit {
 
   constructor(
     private messageService: MessagingService,
-    private userService: UserService,
     private toastr: ToastrService
   ) { }
 
@@ -45,7 +42,7 @@ export class MessagesComponent implements OnInit {
       this.response = new Message();
     }, error => {
       this.toastr.error('Error while sending the message', 'Message not sent');
-    })
+    });
   }
 
   loadMessages() {

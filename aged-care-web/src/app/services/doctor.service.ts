@@ -14,7 +14,13 @@ export class DoctorService {
     return this.http.get(this.url + name + '/healthrecord');
   }
 
+  getInfoByPatientID(partientID) {
+    return this.http.get(this.url + 'healthrecord/patient/' + partientID);
+  }
+
   getDoctors() {
     return this.http.get(this.url);
   }
+
+
 }

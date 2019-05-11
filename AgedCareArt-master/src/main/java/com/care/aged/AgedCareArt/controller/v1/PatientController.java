@@ -27,6 +27,16 @@ public class PatientController {
     	return patientRepository.findAll().stream().filter(this::isPrestigious).collect(Collectors.toList());
     }
 
+    @GetMapping
+    public List<Patient> allPatients() {
+        return patientRepository.findAll();
+    }
+
+    @PostMapping
+    public Patient updatePatient(@RequestBody Patient patient) {
+        return patientRepository.save(patient);
+    }
+
     public boolean isPrestigious(Patient patient) {
     	if(patient.getSurname() == null)
     		return false;

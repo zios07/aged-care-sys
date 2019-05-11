@@ -27,6 +27,7 @@ export const appRoutes: Routes = [
 	{ path: 'nurse-visiting', component: NurseVisitingComponent, canActivate: [AuthGuard] },
 	{ path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
 	{ path: 'health-records', component: HealtRecordsComponent, canActivate: [AuthGuard] },
+	{ path: 'health-records/:patientID', component: HealtRecordsComponent, canActivate: [AuthGuard] },
 	{ path: 'doctor-inbox', component: DoctorInboxComponent, canActivate: [AuthGuard] },
 
 	{ path: '', redirectTo: '/patient-list', pathMatch: 'full', canActivate: [AuthGuard] },

@@ -12,6 +12,10 @@ export class PatientService {
   constructor(private http: HttpClient) {
   }
   getAll(): Observable<any> {
+    return this.http.get(this.API)
+  }
+
+  getPrestigious(): Observable<any> {
     return this.http.get(this.API + '/prestigious')
   }
 

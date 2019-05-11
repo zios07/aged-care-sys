@@ -5,7 +5,7 @@
   </mat-card-title>
 
   <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="emergencyContact()">
+    <form [formGroup]="form" (ngSubmit)="createHealthRecord()">
       <mat-grid-list cols="1" rowHeight="100px">
 
         <mat-grid-tile>
@@ -13,6 +13,7 @@
             <input matInput formControlName="healthID" required placeholder="Health ID">
           </mat-form-field>
         </mat-grid-tile>
+
 
         <mat-grid-tile>
           <mat-form-field>
@@ -59,6 +60,9 @@
         </mat-grid-tile>
 
       </mat-grid-list>
+      <button *ngIf="editing" type="submit" [disabled]="!form.valid" mat-raised-button color="primary">Create</button><br>
+      <button routerLink="/patient-list" mat-raised-button>back</button>
+
     </form>
     <br>
 

@@ -14,6 +14,7 @@ import { GiphyService } from 'src/app/services/giphy.service';
 export class PatientEditComponent implements OnInit, OnDestroy {
   patient: any = {};
   sub: Subscription;
+  patientId;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -22,15 +23,14 @@ export class PatientEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params['id'];
-      if (id) {
-        this.patientService.get(id).subscribe((patient: any) => {
+      this.patientId = params['id'];
+      if (this.patientId) {
+        this.patientService.get(this.patientId).subscribe((patient: any) => {
           if (patient) {
             this.patient = patient;
             this.patient.href = patient._links.self.href;
             this.giphyService.get(patient.name).subscribe(url => patient.giphyUrl = url);
           } else {
-            console.log(`Patient with id '${id}' not found, returning to the list`);
             this.gotoList();
           }
         });
@@ -47,7 +47,10 @@ export class PatientEditComponent implements OnInit, OnDestroy {
     this.router.navigate(['/patient-list']);
   }
 
-  save(form: NgForm) {
+  save(form: any) {
+    if (form) {
+      form.id = this.patientId;
+    }
     this.patientService.save(form).subscribe(result => {
       this.gotoList();
     }, error => console.error(error));
