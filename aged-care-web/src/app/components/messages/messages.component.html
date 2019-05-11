@@ -3,6 +3,7 @@
   <table class="table table-striped">
     <tr>
       <th>Sender Email</th>
+      <th>Sender Username</th>
       <th>Date</th>
       <th>Message</th>
       <th>Status</th>
@@ -10,6 +11,7 @@
 
     <tr *ngFor="let msg of messages">
       <td>{{msg.sender.email}}</td>
+      <td>{{msg.sender.account?.username}}</td>
       <td>{{msg.sendDate}}</td>
       <td>{{msg.body}}</td>
       <td>

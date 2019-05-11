@@ -43,6 +43,8 @@ export class MessagesComponent implements OnInit {
       this.toastr.info('You message was sent to : ' + this.response.receiver.email);
       this.responding = false;
       this.response = new Message();
+    }, error => {
+      this.toastr.error('Error while sending the message', 'Message not sent');
     })
   }
 

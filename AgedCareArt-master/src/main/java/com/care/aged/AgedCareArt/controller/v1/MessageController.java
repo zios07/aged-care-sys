@@ -2,6 +2,7 @@ package com.care.aged.AgedCareArt.controller.v1;
 
 
 import com.care.aged.AgedCareArt.entity.Message;
+import com.care.aged.AgedCareArt.exception.NotFoundException;
 import com.care.aged.AgedCareArt.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,12 +38,12 @@ public class MessageController {
     }
 
     @RequestMapping(method = POST, value = "send")
-    public Message create(@RequestBody Message message) {
+    public Message create(@RequestBody Message message) throws NotFoundException {
         return this.service.save(message);
     }
 
     @RequestMapping(method = PUT)
-    public Message update(@RequestBody Message message) {
+    public Message update(@RequestBody Message message) throws NotFoundException {
         return this.service.save(message);
     }
 

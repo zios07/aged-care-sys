@@ -2,7 +2,9 @@ package com.care.aged.AgedCareArt.service;
 
 import com.care.aged.AgedCareArt.entity.Message;
 import com.care.aged.AgedCareArt.entity.User;
+import com.care.aged.AgedCareArt.exception.NotFoundException;
 import com.care.aged.AgedCareArt.jpa.MessageRepository;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -20,13 +22,15 @@ public class MessageServiceImpl implements MessageService {
     private UserService userService;
 
     @Override
-    public Message save(Message message) {
-        if (message.getReceiver() != null) {
-            User sender = userService.getByEmail(message.getSender().getEmail());
+    public Message save(Message message) throws NotFoundException {
+        if (message.getSender() != null) {
+            String username = !Strings.isEmpty(message.getSender().getEmail()) ? message.getSender().getEmail() : message.getSender().getAccount().getUsername();
+            User sender = userService.findUserByUsername(username);
             message.setSender(sender);
         }
         if (message.getReceiver() != null) {
-            User receiver = userService.getByEmail(message.getReceiver().getEmail());
+            String username = !Strings.isEmpty(message.getReceiver().getEmail()) ? message.getReceiver().getEmail() : message.getReceiver().getAccount().getUsername();
+            User receiver = userService.findUserByUsername(username);
             message.setReceiver(receiver);
         }
         if (message.getParentMessage() != null) {

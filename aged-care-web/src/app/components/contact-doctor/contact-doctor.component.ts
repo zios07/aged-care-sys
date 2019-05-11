@@ -42,6 +42,7 @@ export class ContactDoctorComponent implements OnInit {
       medicare: [''],
       age: [''],
     });
+    this.form.disable();
     this.getDoctors();
   }
 

@@ -19,8 +19,8 @@ export class ContactAdminComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      sendAddress: ['', Validators.compose([Validators.required, Validators.email])],
-      receiverAddress: ['', Validators.compose([Validators.required, Validators.email])],
+      sendAddress: ['', Validators.compose([Validators.required])],
+      receiverAddress: ['', Validators.compose([Validators.required])],
       message: ['', Validators.compose([Validators.required])]
     });
   }
