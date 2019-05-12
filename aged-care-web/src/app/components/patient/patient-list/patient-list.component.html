@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="connectedRole === 'ADMINISTRATOR'">
   <mat-card-title>Search Records</mat-card-title>
   <mat-card-content>
     <form #searchForm="ngForm" (ngSubmit)="searchRecord(searchForm.value)">
@@ -59,3 +59,7 @@
   </mat-card-content>
   <button mat-fab color="primary" [routerLink]="['/patient-add']" class="mat-elevation-z8">Add</button>
 </mat-card>
+
+<app-healt-records *ngIf="connectedRole === 'PATIENT'"></app-healt-records>
+<app-doctor-inbox *ngIf="connectedRole === 'DOCTOR'"></app-doctor-inbox>
+<app-appointments *ngIf="connectedRole === 'NURSE'"></app-appointments>
